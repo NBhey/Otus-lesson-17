@@ -27,3 +27,18 @@
     display: block;
     margin: 0 auto;
 }
+.choose-city {
+    margin: 0 auto;
+    padding-top: 50px;
+    text-align: center;
+}
+.input-city{
+    display: block;
+    margin: 0 auto;
+    outline: 5px solid white;
+    background-color: skyblue;
+    padding-bottom: 10px;
+}
+.btn {
+    background-color: aliceblue;
+}

@@ -1,4 +1,4 @@
-(async function () {
+(async function city() {
     const paragraphe = document.querySelector('div');
     const userCity = document.createElement('p');
     userCity.classList.add('cityUser');
@@ -19,15 +19,15 @@
         const dataCity = await getCity();
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&q=${dataCity}&appid=fd185eec875c277bc16bccdb3629b6af`);
         const data = await response.json();
-        console.log(data)
-        return data['main'].temp;
+        // console.log(data)
+        return data['main'].temp; 
     }
     getTemperature();
     async function imageGet(){
       const dataCity = await getCity();
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&q=${dataCity}&appid=fd185eec875c277bc16bccdb3629b6af`);
       const data = await response.json();
-      console.log(data.weather[0].icon)
+      // console.log(data.weather[0].icon)
       return data.weather[0].icon;
   }
      imageGet();      
@@ -37,11 +37,10 @@
         temp.innerHTML =` ${await getTemperature()} °C `;
         image.src = `http://openweathermap.org/img/wn/${await imageGet()}@2x.png`;
         paragraphe.append(userCity,temp,image)
-        console.log(userCity,temp)
+        // console.log(userCity,temp)
     }
     showUserCity(); 
-    
-    
   })();
   
+  module.exports = {city}
 
