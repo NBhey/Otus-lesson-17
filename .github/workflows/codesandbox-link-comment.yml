@@ -2,15 +2,17 @@ name: Add codesandbox link
 
 on:
   pull_request:
-    types: [opened]
-  # https://github.com/mshick/add-pr-comment/issues/25
-  pull_request_target:
-    types: [opened]
+  #   types: [opened]
+  # # https://github.com/mshick/add-pr-comment/issues/25
+  # pull_request_target:
+  #   types: [opened]
 
 jobs:
   codesandbox-comment:
     name: Add codesandbox link comment
     runs-on: ubuntu-latest
+    permissions:
+        pull-requests: write
     steps:
       - uses: mshick/add-pr-comment@v1
         env:
