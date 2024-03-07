@@ -1,6 +1,7 @@
- 
+
 (async function() {
-    
+
+    // const getUserData = require('./getUserData')
     const input = document.querySelector('.input-city');
     console.log(input)
     const button = document.querySelector('.btn');
@@ -8,6 +9,7 @@
     function clickChangeCity(){
         let newUserCity = document.querySelector('.cityUser')
         newUserCity.innerText = input.value;
+        // getUserData(newUserCity)
         console.log(newUserCity)
     }
     button.addEventListener('click', clickChangeCity);

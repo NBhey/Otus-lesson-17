@@ -1,6 +1,6 @@
-(async function city() {
+async function city(userCity) {
     const paragraphe = document.querySelector('div');
-    const userCity = document.createElement('p');
+    userCity = document.createElement('p');
     userCity.classList.add('cityUser');
     const temp = document.createElement('p')
     temp.classList.add('tempUser');
@@ -40,7 +40,6 @@
         // console.log(userCity,temp)
     }
     showUserCity(); 
-  })();
-  
-  module.exports = {city}
+  };
+  city();
 
