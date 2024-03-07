@@ -41,5 +41,3 @@ async function city(userCity) {
     }
     showUserCity(); 
   };
-  city();
-
