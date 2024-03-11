@@ -1,3 +1,4 @@
+
 async function city(userCity) {
     const paragraphe = document.querySelector('div');
     userCity = document.createElement('p');
@@ -41,3 +42,6 @@ async function city(userCity) {
     }
     showUserCity(); 
   };
+city()
+
+module.exports = {city}
