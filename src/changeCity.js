@@ -1,7 +1,7 @@
-const getUserData = require('./getUserData')
-// import {city } from './getUserData'
+// const getUserData = require('./getUserData')
+import {city } from './getUserData.js'
 
- async function changeCity() {
+  function changeCity() {
 
     // const getUserData = require('./getUserData')
     const input = document.querySelector('.input-city');
@@ -11,10 +11,10 @@ const getUserData = require('./getUserData')
     function clickChangeCity(){
         let newUserCity = document.querySelector('.cityUser')
         newUserCity.innerText = input.value;
-        // getUserData(newUserCity)
+        city(newUserCity)
         console.log(newUserCity)
     }
     button.addEventListener('click', clickChangeCity);
 }
-
+changeCity()
 

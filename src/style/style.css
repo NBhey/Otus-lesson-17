@@ -15,9 +15,12 @@
 .title {
     text-align: center;
 }
-.cityUser {
+.title-city {
     text-align: center;
     font-size: 30px;
+}
+.city {
+    color: rgb(13, 149, 216);
 }
 .tempUser {
     text-align: center;

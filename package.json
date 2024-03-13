@@ -2,9 +2,11 @@
   "name": "otus-lesson-17",
   "version": "1.0.0",
   "type": "commonjs",
-  "main": "getUserData.js",
+  "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "webpack serve",
+    "build-dev": "webpack --env mode development"
   },
   "repository": {
     "type": "git",
@@ -20,11 +22,15 @@
     "@babel/cli": "^7.23.9",
     "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.24.0",
+    "css-loader": "^6.10.0",
     "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.29.1",
+    "html-webpack-plugin": "^5.6.0",
     "jest": "^29.7.0",
+    "style-loader": "^3.3.4",
     "webpack": "^5.90.3",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.3"
   },
   "keywords": [],
   "description": ""
