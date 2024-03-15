@@ -4,9 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode:'development',
   target: 'browserslist',
-  entry:'./src/getUserData.js',
+  entry:'./src/index.js',
   output: {
-    filename: 'my-first-webpack.bundle.js',
+    filename: 'main.js',
   },
   module: {
     rules: [
@@ -16,17 +16,26 @@ module.exports = {
       {
         test: /\.html$/, 
         use: 'html-loader'
-     },
+      },
       {
         test:/\.css$/,
         use:['style-loader','css-loader']
-      }
+      },
+      // {
+      //   test: /\.js$/,
+      //   exclude: /node_modules/,
+      //   use: ["babel-loader"]
+      // }
     ],
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [new HtmlWebpackPlugin({
+    title: "Webpack App", // это попадет в <title/>
+    filename: "index.html", // название файла после сборки
+    template: "dist/index.html", // где брать шаблон
+  })],
   devServer: {
     static:  {
-      directory: path.join(__dirname, 'dev'),
+      directory: path.join(__dirname, 'dist'),
     },
     compress: false,
     port: 3000,

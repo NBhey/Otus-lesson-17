@@ -1,7 +1,10 @@
-import getCity from './getUser-ip.js'
+import getCity from './getUser-ip'
+import "./style/style.css"
+
+const API_KEY = 'fd185eec875c277bc16bccdb3629b6af'
 
 async function global() {
-const API_KEY = 'fd185eec875c277bc16bccdb3629b6af'
+
 
 const titleCity = document.querySelector('.title-city');
 
@@ -27,7 +30,7 @@ async function showTemperature(currentCity){
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&q=${dataCity}&appid=${API_KEY}`);
     const data = await response.json();
     console.log(data.main.temp);
-    return data.main.temp
+    return Math.round(data.main.temp)
 }
 async function imageGet(currentCity){
     const dataCity = await currentCity;
@@ -47,21 +50,21 @@ showUserCity(test1());
 
 const input = document.querySelector('.input-city');
 const button = document.querySelector('.btn');
-let test;
-
-button.addEventListener('click',async () => {
-    test = input.value;
-    city.innerText = test;
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&q=${test}&appid=${API_KEY}`);
-    const data = await response.json();
-    temperature.innerText =`${data.main.temp} °C `;
-    console.log(data);
-    image.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-    input.value = ''
 
 
+// button.addEventListener('click',async () => {
+//     test = input.value.trim();
+//     city.innerText = test;
+//     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&q=${test}&appid=${API_KEY}`);
+//     const data = await response.json();
+//     temperature.innerText =`${Math.round(data.main.temp)} °C `;
+//     console.log(data);
+//     image.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+//     input.value = '';
+// });
+button.addEventListener('click', () => {
+    let test = input.value.trim();
+    showUserCity(test);
 })
-
-
 }
 global();
