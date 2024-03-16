@@ -2,7 +2,6 @@ import getCity from './getUser-ip'
 import "./style/style.css"
 
 const API_KEY = 'fd185eec875c277bc16bccdb3629b6af'
-
 async function global() {
 
 
@@ -19,17 +18,13 @@ const image = document.createElement('img')
 
 const test1 = async function() {
     const result = await getCity();
-    console.log(result)
     return result;
 }
- console.log(test1())
 
 async function showTemperature(currentCity){
     const dataCity = await currentCity;
-    console.log(dataCity)
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&q=${dataCity}&appid=${API_KEY}`);
     const data = await response.json();
-    console.log(data.main.temp);
     return Math.round(data.main.temp)
 }
 async function imageGet(currentCity){
@@ -47,11 +42,23 @@ async function showUserCity(currentCity) {
 
 showUserCity(test1()); 
 
-
+async function readList() {
+    const data = localStorage.getItem("list");
+    if (data === null) return [];
+    return JSON.parse(data);
+  }
 const input = document.querySelector('.input-city');
 const button = document.querySelector('.btn');
 
-
+function saveList(items) {
+    localStorage.setItem("list", JSON.stringify(items));
+  }
+function drawList(el, items) {
+    el.innerHTML = `<ol>${items.map((el) => `<li>${el}</li>`).join("")}</ol>`;
+  }
+  const listEl = document.querySelector("#list");
+  const items = await readList();
+  drawList(listEl, items);
 // button.addEventListener('click',async () => {
 //     test = input.value.trim();
 //     city.innerText = test;
@@ -65,6 +72,16 @@ const button = document.querySelector('.btn');
 button.addEventListener('click', () => {
     let test = input.value.trim();
     showUserCity(test);
+    input.value = ''
+
+      // добавляем элемент в список
+      items.push(test);
+
+      // обновляем список
+      drawList(listEl, items);
+  
+      // сохраняем список
+      saveList(items);
 })
 }
 global();

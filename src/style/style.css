@@ -7,7 +7,12 @@
 }
 .wrap {
     margin: 0 auto;
-    padding: 50px;
+    padding: 10px;
+    display: grid;
+    grid-template-areas:
+        "title list"
+        "input list";
+    gap: 30px;
 }
 .title-wrap {
     padding-bottom: 30px;
@@ -18,9 +23,10 @@
 .title-city {
     text-align: center;
     font-size: 30px;
+    grid-area: title;
 }
 .city {
-    color: blueviolet;
+    color: rgb(6, 6, 7);
 }
 .tempUser {
     text-align: center;
@@ -30,18 +36,23 @@
     display: block;
     margin: 0 auto;
 }
-.choose-city {
+.change-city {
     margin: 0 auto;
-    padding-top: 50px;
+    padding-top: 0px;
     text-align: center;
+    grid-area: input;
 }
 .input-city{
     display: block;
     margin: 0 auto;
-    outline: 5px solid white;
+    outline: 0px solid white;
     background-color: skyblue;
     padding-bottom: 10px;
 }
 .btn {
     background-color: aliceblue;
+}
+#list {
+    grid-area: list;
+    justify-self: center;
 }
