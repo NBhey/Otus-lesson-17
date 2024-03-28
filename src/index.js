@@ -1,9 +1,11 @@
-import getCity from './getUser-ip'
+import getCity from './getUserIp'
+import saveList from './localStorage'
+import { getItem } from './localStorage'
+import drawList from './drawList'
+import { countCity } from './countCity'
 import "./style/style.css"
 
 const API_KEY = 'fd185eec875c277bc16bccdb3629b6af'
-async function global() {
-
 
 const titleCity = document.querySelector('.title-city');
 
@@ -16,7 +18,8 @@ temperature.classList.add('temperature');
 const image = document.createElement('img')
     image.classList.add('imageUser');
 
-const test1 = async function() {
+async function global() {
+const userCity = async function() {
     const result = await getCity();
     return result;
 }
@@ -40,48 +43,28 @@ async function showUserCity(currentCity) {
     return titleCity.append(city,temperature,image)
 }
 
-showUserCity(test1()); 
+showUserCity(userCity()); 
 
-async function readList() {
-    const data = localStorage.getItem("list");
-    if (data === null) return [];
-    return JSON.parse(data);
-  }
+
+
 const input = document.querySelector('.input-city');
 const button = document.querySelector('.btn');
+const listEl = document.querySelector("#list");
 
-function saveList(items) {
-    localStorage.setItem("list", JSON.stringify(items));
-  }
-function drawList(el, items) {
-    el.innerHTML = `<ol>${items.map((el) => `<li>${el}</li>`).join("")}</ol>`;
-  }
-  const listEl = document.querySelector("#list");
-  const items = await readList();
-  drawList(listEl, items);
-// button.addEventListener('click',async () => {
-//     test = input.value.trim();
-//     city.innerText = test;
-//     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&q=${test}&appid=${API_KEY}`);
-//     const data = await response.json();
-//     temperature.innerText =`${Math.round(data.main.temp)} °C `;
-//     console.log(data);
-//     image.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-//     input.value = '';
-// });
+const readList = await getItem();
+
+drawList(listEl,readList);
+console.log(listEl.children.length);
 button.addEventListener('click', () => {
-    let test = input.value.trim();
-    showUserCity(test);
+    let value = input.value.trim();
+    if (value === '') {alert('Введите значение в поле')}
+    showUserCity(value);
+     
+    readList.push(value);
+    drawList(listEl,readList);
+    saveList(readList);
+    countCity(listEl);
     input.value = ''
-
-      // добавляем элемент в список
-      items.push(test);
-
-      // обновляем список
-      drawList(listEl, items);
-  
-      // сохраняем список
-      saveList(items);
 })
 }
 global();
