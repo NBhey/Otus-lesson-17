@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack serve",
-    "build-dev": "webpack --env mode development"
+    "build-dev": "webpack --env mode development",
+    "eslint":"eslint"
   },
   "repository": {
     "type": "git",
