@@ -1,0 +1,61 @@
+*{
+    /* background-color: salmon; */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: bisque;
+}
+.wrap {
+    margin: 0 auto;
+    padding: 10px;
+    display: grid;
+    grid-template-areas:
+        "title list"
+        "input list";
+    gap: 30px;
+}
+.title-wrap {
+    padding-bottom: 30px;
+}
+.title {
+    text-align: center;
+}
+.title-city {
+    text-align: center;
+    font-size: 30px;
+    grid-area: title;
+}
+.city {
+    color: rgb(6, 6, 7);
+}
+.tempUser {
+    text-align: center;
+    font-size: 24px;
+}
+.imageUser {
+    display: block;
+    margin: 0 auto;
+}
+.change-city {
+    margin: 0 auto;
+    padding-top: 0px;
+    text-align: center;
+    grid-area: input;
+}
+.input-city{
+    display: block;
+    margin: 0 auto;
+    outline: 0px solid white;
+    background-color: skyblue;
+    padding-bottom: 10px;
+}
+.btn {
+    background-color: aliceblue;
+}
+#list {
+    grid-area: list;
+    justify-self: center;
+}
+#list > p{
+    cursor: pointer;
+}
