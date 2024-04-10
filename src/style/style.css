@@ -56,3 +56,6 @@
     grid-area: list;
     justify-self: center;
 }
+#list > p{
+    cursor: pointer;
+}
